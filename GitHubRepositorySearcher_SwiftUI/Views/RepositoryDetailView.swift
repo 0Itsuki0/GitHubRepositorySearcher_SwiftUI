@@ -18,18 +18,22 @@ struct RepositoryDetailView: View {
         
            VStack(alignment: .center) {
                AvatarIcon
+                   .padding(.horizontal, 20)
                
                Spacer()
-               Divider()
-
+               
                Description
-                 .padding(.vertical)
-                 .padding(.top, 35)
-                 .padding(.horizontal)
+                   .padding(.top, 20)
+                   .padding(.horizontal, 20)
+               
+               
+               Spacer()
+
                
                MoreInformations
-                   .padding(.horizontal)
-                   .padding(.bottom, 35)
+                   .padding(.top, 10)
+                   .padding(.horizontal, 40)
+                   .padding(.bottom, 40)
                
            }
        }
@@ -48,10 +52,13 @@ extension RepositoryDetailView {
     var AvatarIcon: some View {
         VStack(alignment: .center) {
             viewModel.avatarImage
+                .resizable()
                 .scaledToFit()
-                .padding(.all, 40)
-            Spacer()
+                .padding(.horizontal, 40.0)
+                .padding(.top, 50)
+                .padding(.bottom, 15)
             Text("\(viewModel.repository.fullName)")
+                .bold()
         }
         .foregroundColor(.white)
         .font(.system(size: 25))
@@ -61,50 +68,55 @@ extension RepositoryDetailView {
     var Description: some View {
         Text("\(viewModel.repository.description ?? "No Description available")")
             .font(.system(size: 15))
+            .minimumScaleFactor(0.6)
             .multilineTextAlignment(.leading)
             .foregroundColor(.white)
-        }
+    
+    }
     
     
     var MoreInformations: some View {
         HStack {
-            VStack {
-                Text("stargazers_count")
-                    .font(.system(size: 20))
-                    .padding(.bottom, 10)
-                Text("\(viewModel.repository.stargazersCount ?? 0)")
-                    .font(.subheadline)
-            }
-            Spacer()
-            VStack {
-                Text("forks")
-                    .font(.system(size: 20))
-                    .padding(.bottom, 10)
-                Text("\(viewModel.repository.forks ?? 0)")
-                    .font(.subheadline)
-            }
-            Spacer()
-            VStack {
-                Text("open_issues")
-                    .font(.system(size: 20))
-                    .padding(.bottom, 10)
-                Text("\(viewModel.repository.openIssues ?? 0)")
-                    .font(.subheadline)
-                
+            VStack(alignment: .leading) {
+                Text("language")
+                    .padding(.bottom, 0.5)
+                Text("Stars Count")
+                    .padding(.bottom, 0.5)
+                Text("Watchers Count")
+                    .padding(.bottom, 0.5)
+                Text("Open Issues")
+                    .padding(.bottom, 0.5)
+                Text("Forks")
             }
             
             Spacer()
-            VStack {
-                Text("watchers_count")
-                    .font(.system(size: 20))
-                    .padding(.bottom, 10)
+            
+            VStack(alignment: .trailing) {
+                Text(viewModel.repository.language ?? "")
+                    .padding(.bottom, 0.5)
+                Text("\(viewModel.repository.stargazersCount ?? 0)")
+                    .padding(.bottom, 0.5)
                 Text("\(viewModel.repository.watchersCount ?? 0)")
-                    .font(.subheadline)
-                
+                    .padding(.bottom, 0.5)
+                Text("\(viewModel.repository.openIssues ?? 0)")
+                    .padding(.bottom, 0.5)
+                Text("\(viewModel.repository.forks ?? 0)")
+                    .padding(.bottom, 0.5)
             }
         }
-        .foregroundColor(.black)
-        .font(.system(size: 25))
+        .foregroundColor(.white)
+        .font(.system(size: 17))
+        .minimumScaleFactor(0.6)
     }
     
+}
+
+struct RepositoryDetailView_Previews: PreviewProvider {
+
+    static var previews: some View {
+
+        let repository = Repository(id: 44838949, fullName: "apple/swift", owner: Owner(id: 10639145, avatarURL: "https://avatars.githubusercontent.com/u/10639145?v=4", url: "https://api.github.com/users/apple"), description: "The Swift Programming Language", createdDateTimeString: "2015-10-23T21:15:07Z", updatedDateTimeString: "2023-03-02T00:54:28Z", stargazersCount: 61951, language: "C++", forks: 9976, openIssues: 6407, watchersCount: 61951)
+        
+        RepositoryDetailView(viewModel: RepositoryDetailViewModel(repository:repository))
+    }
 }

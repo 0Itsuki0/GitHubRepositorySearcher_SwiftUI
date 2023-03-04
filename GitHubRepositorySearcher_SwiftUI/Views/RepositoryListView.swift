@@ -81,24 +81,14 @@ extension RepositoryListView {
                     NavigationLink(destination: RepositoryDetailView(viewModel: repository)) {
                         RepositoryListCellView(viewModel: repository)
                     }
+                    Divider()
+                        .background(.white)
                 }
             }
+
         }
     }
-    
-    
-    var RepositoryListFiltered: some View {
-        ScrollView(.horizontal) {
-            HStack(alignment: .center, spacing: 20) {
-                ForEach(viewModel.results, id: \.id) { result in
-                    let repository = RepositoryDetailViewModel(repository: result)
-                    NavigationLink(destination: RepositoryDetailView(viewModel: repository)) {
-                        RepositoryListCellView(viewModel: repository)
-                    }
-                }
-            }
-        }
-    }
+ 
     
 }
 
