@@ -13,17 +13,16 @@ struct RepositoryListView: View {
     var body: some View {
            NavigationView {
                ZStack {
-                   // Background color. LinearGradient in this case.
+
                    Background
                        .ignoresSafeArea()
                    
                    VStack {
-                       // Textfield including text above it
                        SearchField
                        
-                       // List of weather of the cities.
                        RepositoryList
                    }
+                   .errorAlert(error: $viewModel.error)
                }
                .navigationBarHidden(true)
            }
@@ -50,11 +49,12 @@ extension RepositoryListView {
             
             HStack {
                 TextField("e.g Swift ", text: $viewModel.searchFieldText)
+                    .onSubmit { viewModel.fetchRepositoryList() }
                     .padding()
                     .foregroundColor(.white)
                     .background(.white.opacity(0.17))
                     .cornerRadius(10)
-                    .frame(width: 300, height: 50, alignment: .center)
+                    .frame(height: 50, alignment: .center)
                     .shadow(color: .black, radius: 5, x: 0, y: 2)
                 
                 Spacer()

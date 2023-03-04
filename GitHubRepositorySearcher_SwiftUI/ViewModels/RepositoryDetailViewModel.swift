@@ -34,7 +34,8 @@ class RepositoryDetailViewModel: ObservableObject {
                     print("Failed with error: \(error)")
                     return
                 case .finished:
-                    print("Successfully finished!")
+//                    print("Successfully finished!")
+                    break
                 }
             }, receiveValue: { value in
                 self.avatarImage = value
