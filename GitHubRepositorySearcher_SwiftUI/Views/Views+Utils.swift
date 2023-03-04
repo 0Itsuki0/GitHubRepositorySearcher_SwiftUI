@@ -20,4 +20,13 @@ extension View {
             Text(error.recoverySuggestion ?? "")
         }
     }
+    
+    @ViewBuilder func isHidden(_ isHidden: Bool) -> some View {
+        if isHidden {
+            self.hidden()
+        } else {
+            self
+        }
+    }
+
 }

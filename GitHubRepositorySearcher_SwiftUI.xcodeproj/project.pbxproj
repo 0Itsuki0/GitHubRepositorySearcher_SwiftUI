@@ -27,9 +27,12 @@
 		98BF869829B3109D00557CB0 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869729B3109D00557CB0 /* LocalizedAlertError.swift */; };
 		98BF869929B3109D00557CB0 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869729B3109D00557CB0 /* LocalizedAlertError.swift */; };
 		98BF869A29B3109D00557CB0 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869729B3109D00557CB0 /* LocalizedAlertError.swift */; };
-		98BF869C29B311AD00557CB0 /* Views+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Alerts.swift */; };
-		98BF869D29B311AD00557CB0 /* Views+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Alerts.swift */; };
-		98BF869E29B311AD00557CB0 /* Views+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Alerts.swift */; };
+		98BF869C29B311AD00557CB0 /* Views+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Utils.swift */; };
+		98BF869D29B311AD00557CB0 /* Views+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Utils.swift */; };
+		98BF869E29B311AD00557CB0 /* Views+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF869B29B311AD00557CB0 /* Views+Utils.swift */; };
+		98BF86A529B32A6700557CB0 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF86A429B32A6700557CB0 /* Loader.swift */; };
+		98BF86A629B32A6700557CB0 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF86A429B32A6700557CB0 /* Loader.swift */; };
+		98BF86A729B32A6700557CB0 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF86A429B32A6700557CB0 /* Loader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +72,9 @@
 		98BF868929B1DF7A00557CB0 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
 		98BF868B29B2D02F00557CB0 /* SampleData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SampleData; sourceTree = "<group>"; };
 		98BF869729B3109D00557CB0 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
-		98BF869B29B311AD00557CB0 /* Views+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+Alerts.swift"; sourceTree = "<group>"; };
+		98BF869B29B311AD00557CB0 /* Views+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+Utils.swift"; sourceTree = "<group>"; };
+		98BF86A329B31E2D00557CB0 /* GitHubRepositorySearcher-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GitHubRepositorySearcher-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
+		98BF86A429B32A6700557CB0 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +126,7 @@
 		98BF864C29B1D86100557CB0 /* GitHubRepositorySearcher_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				98BF86A329B31E2D00557CB0 /* GitHubRepositorySearcher-SwiftUI-Info.plist */,
 				98BF867929B1D8FD00557CB0 /* ViewModels */,
 				98BF867829B1D8F500557CB0 /* Views */,
 				98BF867729B1D8EE00557CB0 /* Models */,
@@ -171,9 +177,10 @@
 			isa = PBXGroup;
 			children = (
 				98BF864F29B1D86100557CB0 /* RepositoryListView.swift */,
+				98BF86A429B32A6700557CB0 /* Loader.swift */,
 				98BF868929B1DF7A00557CB0 /* RepositoryDetailView.swift */,
 				98BF868729B1DE5A00557CB0 /* RepositoryListCellView.swift */,
-				98BF869B29B311AD00557CB0 /* Views+Alerts.swift */,
+				98BF869B29B311AD00557CB0 /* Views+Utils.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,11 +333,12 @@
 			files = (
 				98BF868329B1DA6300557CB0 /* RepositoryDetailViewModel.swift in Sources */,
 				98BF868129B1DA4C00557CB0 /* RepositoryListViewModel.swift in Sources */,
+				98BF86A529B32A6700557CB0 /* Loader.swift in Sources */,
 				98BF865029B1D86100557CB0 /* RepositoryListView.swift in Sources */,
 				98BF867B29B1D93500557CB0 /* Response.swift in Sources */,
 				98BF867F29B1D95C00557CB0 /* GitHubAPIService.swift in Sources */,
 				98BF869829B3109D00557CB0 /* LocalizedAlertError.swift in Sources */,
-				98BF869C29B311AD00557CB0 /* Views+Alerts.swift in Sources */,
+				98BF869C29B311AD00557CB0 /* Views+Utils.swift in Sources */,
 				98BF864E29B1D86100557CB0 /* GitHubRepositorySearcher_SwiftUIApp.swift in Sources */,
 				98BF868A29B1DF7A00557CB0 /* RepositoryDetailView.swift in Sources */,
 				98BF867D29B1D94100557CB0 /* Repository.swift in Sources */,
@@ -342,8 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98BF869D29B311AD00557CB0 /* Views+Alerts.swift in Sources */,
+				98BF869D29B311AD00557CB0 /* Views+Utils.swift in Sources */,
 				98BF865F29B1D86300557CB0 /* GitHubRepositorySearcher_SwiftUITests.swift in Sources */,
+				98BF86A629B32A6700557CB0 /* Loader.swift in Sources */,
 				98BF869929B3109D00557CB0 /* LocalizedAlertError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,9 +362,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				98BF869A29B3109D00557CB0 /* LocalizedAlertError.swift in Sources */,
-				98BF869E29B311AD00557CB0 /* Views+Alerts.swift in Sources */,
+				98BF869E29B311AD00557CB0 /* Views+Utils.swift in Sources */,
 				98BF866B29B1D86300557CB0 /* GitHubRepositorySearcher_SwiftUIUITestsLaunchTests.swift in Sources */,
 				98BF866929B1D86300557CB0 /* GitHubRepositorySearcher_SwiftUIUITests.swift in Sources */,
+				98BF86A729B32A6700557CB0 /* Loader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,11 +510,10 @@
 				DEVELOPMENT_TEAM = U572Q7GJ6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "GitHubRepositorySearcher-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,11 +538,10 @@
 				DEVELOPMENT_TEAM = U572Q7GJ6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "GitHubRepositorySearcher-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

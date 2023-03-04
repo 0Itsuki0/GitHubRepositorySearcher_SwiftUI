@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RepositoryListView: View {
     @ObservedObject var viewModel = RepositoryListViewModel()
+    @FocusState private var searchFieldFocused: Bool
     
     var body: some View {
            NavigationView {
@@ -23,8 +24,13 @@ struct RepositoryListView: View {
                        RepositoryList
                    }
                    .errorAlert(error: $viewModel.error)
+                   
+                   Loader(isShown: $viewModel.isLoading)
                }
                .navigationBarHidden(true)
+               .onTapGesture {
+                   searchFieldFocused = false
+               }
            }
        }
 }
@@ -43,22 +49,35 @@ extension RepositoryListView {
             Text("Search for GitHub Repository")
                 .font(.system(size: 25))
                 .foregroundColor(.white)
-                .padding(.top)
-                .padding(.vertical, 10)
-            
+                .padding(.top, 10)
+                .padding(.bottom, 5)
             
             HStack {
-                TextField("e.g Swift ", text: $viewModel.searchFieldText)
-                    .onSubmit { viewModel.fetchRepositoryList() }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(.white.opacity(0.17))
-                    .cornerRadius(10)
-                    .frame(height: 50, alignment: .center)
-                    .shadow(color: .black, radius: 5, x: 0, y: 2)
+                ZStack(alignment: .trailing) {
+                    TextField("e.g Swift ", text: $viewModel.searchFieldText)
+                        .onSubmit { viewModel.fetchRepositoryList() }
+                        .focused($searchFieldFocused)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.white.opacity(0.17))
+                        .cornerRadius(10)
+                        .frame(height: 50, alignment: .center)
+                        .shadow(color: .black, radius: 5, x: 0, y: 2)
+                    
+                    Button(action: { viewModel.searchFieldText = "" }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .frame(width: 40, height: 40, alignment: .center)
+                            .padding(.trailing, 10)
+                            .foregroundColor(.secondary)
+                    }
+                }
                 
                 Spacer()
-                Button(action: {viewModel.fetchRepositoryList()}) {
+                
+                Button(action: {
+                    viewModel.fetchRepositoryList()
+                    searchFieldFocused = false
+                }) {
                     Image(systemName: "paperplane")
                         .frame(width: 50, height: 50, alignment: .center)
                         .foregroundColor(.white)

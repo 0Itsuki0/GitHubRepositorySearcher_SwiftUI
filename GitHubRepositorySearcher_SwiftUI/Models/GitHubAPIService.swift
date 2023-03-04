@@ -20,6 +20,7 @@ class GitHubAPIService {
         case network
         case badRequest
         case parsing
+        case noResult
         
         var errorDescription: String? {
             switch self {
@@ -33,6 +34,8 @@ class GitHubAPIService {
                 return "Invalid request."
             case .parsing:
                 return "Error parsing response."
+            case .noResult:
+                return "No result Available for the given keyword."
             }
         }  
         
