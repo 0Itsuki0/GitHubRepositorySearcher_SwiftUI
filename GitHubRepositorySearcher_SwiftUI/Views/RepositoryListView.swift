@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RepositoryListView.swift
 //  GitHubRepositorySearcher_SwiftUI
 //
 //  Created by イツキ on 2023/03/03.
@@ -26,6 +26,7 @@ struct RepositoryListView: View {
                    .errorAlert(error: $viewModel.error)
                    
                    Loader(isShown: $viewModel.isLoading)
+                       .accessibilityIdentifier("loader")
                }
                .navigationBarHidden(true)
                .onTapGesture {
@@ -63,6 +64,7 @@ extension RepositoryListView {
                         .cornerRadius(10)
                         .frame(height: 50, alignment: .center)
                         .shadow(color: .black, radius: 5, x: 0, y: 2)
+                        .accessibilityIdentifier("searchField")
                     
                     Button(action: { viewModel.searchFieldText = "" }) {
                         Image(systemName: "xmark.circle.fill")
@@ -70,6 +72,7 @@ extension RepositoryListView {
                             .padding(.trailing, 10)
                             .foregroundColor(.secondary)
                     }
+                    .accessibilityIdentifier("clearButton")
                 }
                 
                 Spacer()
@@ -82,6 +85,7 @@ extension RepositoryListView {
                         .frame(width: 50, height: 50, alignment: .center)
                         .foregroundColor(.white)
                 }
+                .accessibilityIdentifier("searchButton")
                 
             }
             .padding(.all, 10)
@@ -95,7 +99,7 @@ extension RepositoryListView {
     var RepositoryList: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(viewModel.results, id: \.id) { result in
+                ForEach(viewModel.repositoryList, id: \.id) { result in
                     let repository = RepositoryDetailViewModel(repository: result)
                     NavigationLink(destination: RepositoryDetailView(viewModel: repository)) {
                         RepositoryListCellView(viewModel: repository)
@@ -104,8 +108,8 @@ extension RepositoryListView {
                         .background(.white)
                 }
             }
-
         }
+        .accessibilityIdentifier("repositoryListView")
     }
  
     

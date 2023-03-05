@@ -51,14 +51,16 @@ extension RepositoryDetailView {
     
     var AvatarIcon: some View {
         VStack(alignment: .center) {
-            viewModel.avatarImage
+            (viewModel.avatarImage ?? Image(systemName: "rectangle.on.rectangle.slash"))
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal, 40.0)
                 .padding(.top, 50)
                 .padding(.bottom, 15)
+                .accessibilityIdentifier("RepositoryDetailAvatarImageView")
             Text("\(viewModel.repository.fullName)")
                 .bold()
+                .accessibilityIdentifier("RepositoryDetailNameLabel")
         }
         .foregroundColor(.white)
         .font(.system(size: 25))
@@ -71,6 +73,7 @@ extension RepositoryDetailView {
             .minimumScaleFactor(0.6)
             .multilineTextAlignment(.leading)
             .foregroundColor(.white)
+            .accessibilityIdentifier("RepositoryDetailDescriptionLabel")
     
     }
     
@@ -94,14 +97,19 @@ extension RepositoryDetailView {
             VStack(alignment: .trailing) {
                 Text(viewModel.repository.language ?? "")
                     .padding(.bottom, 0.5)
+                    .accessibilityIdentifier("RepositoryDetailLanguageLabel")
                 Text("\(viewModel.repository.stargazersCount ?? 0)")
                     .padding(.bottom, 0.5)
+                    .accessibilityIdentifier("RepositoryDetailStarCountLabel")
                 Text("\(viewModel.repository.watchersCount ?? 0)")
                     .padding(.bottom, 0.5)
+                    .accessibilityIdentifier("RepositoryDetailWatchersCountLabel")
                 Text("\(viewModel.repository.openIssues ?? 0)")
                     .padding(.bottom, 0.5)
+                    .accessibilityIdentifier("RepositoryDetailOpenIssuesCountLabel")
                 Text("\(viewModel.repository.forks ?? 0)")
                     .padding(.bottom, 0.5)
+                    .accessibilityIdentifier("RepositoryDetailForksCountLabel")
             }
         }
         .foregroundColor(.white)

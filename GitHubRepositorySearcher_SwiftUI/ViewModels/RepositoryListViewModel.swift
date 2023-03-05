@@ -12,8 +12,8 @@ import Combine
 
 class RepositoryListViewModel: ObservableObject {
     @Published var searchFieldText: String = ""
-    @Published var results = [Repository]()
-    @Published var error: GitHubAPIService.ServiceError?
+    @Published var repositoryList = [Repository]()
+    @Published var error: Error?
     @Published var isLoading: Bool = false
 
     
@@ -28,15 +28,15 @@ class RepositoryListViewModel: ObservableObject {
                 self.isLoading = false
                 switch response {
                 case .failure(let error):
-                    self.error = (error as! GitHubAPIService.ServiceError)
+                    self.error = error
                     return
                 case .finished:
                     break
                 }
             }, receiveValue: { value in
-                self.results = value.items
+                self.repositoryList = value.items
                 if (value.items.count) == 0 {
-                    self.error = GitHubAPIService.ServiceError.noResult
+                    self.error = GitHubAPIService.ServiceError.noResult as Error
                 }
             })
             .store(in: &subscriptions)

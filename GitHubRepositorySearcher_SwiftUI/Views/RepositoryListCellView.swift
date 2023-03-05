@@ -19,11 +19,13 @@ struct RepositoryListCellView: View {
                     .bold()
                     .font(.system(size:25))
                     .multilineTextAlignment(.leading)
+                    .accessibilityIdentifier("RepositoryCellNameLabel")
                 Spacer()
                 Text(viewModel.repository.description ?? "")
                     .font(.system(size:15))
                     .multilineTextAlignment(.leading)
                     .minimumScaleFactor(0.6)
+                    .accessibilityIdentifier("RepositoryCellDescriptionLabel")
                 Spacer()
 
 
@@ -36,6 +38,7 @@ struct RepositoryListCellView: View {
             Text("\(viewModel.repository.language ?? "")")
                 .padding(.trailing, 15)
                 .font(.system(size: 20))
+                .accessibilityIdentifier("RepositoryCellLanguageLabel")
         }
         .foregroundColor(.white)
         .frame(height: 90)

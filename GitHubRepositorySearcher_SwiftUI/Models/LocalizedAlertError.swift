@@ -16,8 +16,8 @@ struct LocalizedAlertError: LocalizedError {
     
     var recoverySuggestion: String = ""
 
-    init?(error: GitHubAPIService.ServiceError?) {
-        guard let localizedError = error else { return nil }
+    init?(error: Error?) {
+        guard let localizedError = error as? LocalizedError else { return nil }
         underlyingError = localizedError
     }
 }

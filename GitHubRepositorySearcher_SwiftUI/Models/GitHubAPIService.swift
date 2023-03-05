@@ -29,7 +29,7 @@ class GitHubAPIService {
             case .urlCreation:
                 return "Something wrong with keyword entered."
             case .network:
-                return "Network error: Please check on connection."
+                return "Network error: The request timed out."
             case .badRequest:
                 return "Invalid request."
             case .parsing:
@@ -55,22 +55,35 @@ class GitHubAPIService {
         
         return session.dataTaskPublisher(for: url)
             .tryMap() { element -> Data in
-                    guard let httpResponse = element.response as? HTTPURLResponse,
-                        httpResponse.statusCode == 200 else {
-                            throw ServiceError.badRequest
-                        }
-                    return element.data
-                    }
+                guard let httpResponse = element.response as? HTTPURLResponse else {
+                    throw ServiceError.network
+                }
+                if httpResponse.statusCode != 200 {
+                    throw ServiceError.badRequest
+                }
+                return element.data
+            }
             .decode(type: Response.self, decoder: decoder)
+            .mapError({ error -> ServiceError in
+                if (error is DecodingError) {
+                    return ServiceError.parsing
+                }
+                else if (error is URLError){
+                    return ServiceError.network
+                }
+                else {
+                    return ServiceError.badRequest
+                }
+            })
             .catch { error in
-                return Fail(error: ServiceError.parsing as Error).eraseToAnyPublisher()
+                return Fail(error: error).eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
 
     }
     
     
-    static func OwnerAvatarImagePublisher(avatarImageURL: URL) -> AnyPublisher<Image, Error> {
+    static func ownerAvatarImagePublisher(avatarImageURL: URL) -> AnyPublisher<Image, Error> {
          
         let session = URLSession.shared
         
@@ -80,6 +93,17 @@ class GitHubAPIService {
                     throw ServiceError.badRequest
                 }
                 return Image(uiImage: uiImage)
+            }
+            .mapError({ error -> ServiceError in
+                if (error is URLError){
+                    return ServiceError.network
+                }
+                else {
+                    return ServiceError.badRequest
+                }
+            })
+            .catch { error in
+                return Fail(error: error).eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
     }

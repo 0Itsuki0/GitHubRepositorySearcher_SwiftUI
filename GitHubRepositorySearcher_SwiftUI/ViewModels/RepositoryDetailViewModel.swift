@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class RepositoryDetailViewModel: ObservableObject {
-    @Published var avatarImage: Image
+    @Published var avatarImage: Image!
     let repository: Repository
     
     init(repository: Repository) {
@@ -24,23 +24,26 @@ class RepositoryDetailViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     private func fetchAvatarImage(avatarImageURL: URL?) {
-        guard let avatarImageURL = avatarImageURL else {return}
+        guard let avatarImageURL = avatarImageURL else {
+            self.avatarImage = Image(systemName: "rectangle.on.rectangle.slash")
+            return
+        }
 
-        GitHubAPIService.OwnerAvatarImagePublisher(avatarImageURL: avatarImageURL)
+        GitHubAPIService.ownerAvatarImagePublisher(avatarImageURL: avatarImageURL)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { response in
                 switch response {
-                case .failure(let error):
-                    print("Failed with error: \(error)")
+                case .failure:
+                    self.avatarImage = Image(systemName: "rectangle.on.rectangle.slash")
                     return
                 case .finished:
-//                    print("Successfully finished!")
                     break
                 }
             }, receiveValue: { value in
                 self.avatarImage = value
             })
             .store(in: &subscriptions)
+
     }
     
 }

@@ -27,11 +27,11 @@ struct Loader: View {
                     .stroke(.secondary, style: StrokeStyle()))
             )
             .progressViewStyle(CircularProgressViewStyle(tint: .secondary))
-            .padding()
-            
+            .padding()            
         }
         .padding(.all, 20)
         .isHidden(!isShown)
+        
     }
     
 }
