@@ -15,7 +15,6 @@ final class RepositoryListViewModelTests: XCTestCase {
     
     private var subscriptions: Set<AnyCancellable>!
     var viewModel: RepositoryListViewModel!
-
     
     override func setUpWithError() throws {
         super.setUp()
@@ -26,7 +25,6 @@ final class RepositoryListViewModelTests: XCTestCase {
     
 
     func testRepositoryListViewModelSuccess() {
-        
         
         let expectation = XCTestExpectation(description: "Fetching repositories. ")
         stub(condition: isHost("api.github.com") && isPath("/search/repositories") ) { _ in
@@ -54,8 +52,8 @@ final class RepositoryListViewModelTests: XCTestCase {
         
     }
     
+    
     func testRepositoryListViewModelError() {
-        
         
         let expectation = XCTestExpectation(description: "Fetching repositories resulting error. ")
         stub(condition: isHost("api.github.com") && isPath("/search/repositories") ) { _ in

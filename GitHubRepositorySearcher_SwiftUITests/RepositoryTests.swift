@@ -12,6 +12,7 @@ import XCTest
 final class RepositoryTests: XCTestCase {
 
     func testRepositoryCreation() {
+        
         let data = dataFrom(filename: "sampleRepository")
         let decoder = JSONDecoder()
         let repository = try! decoder.decode(Repository.self, from: data)
@@ -34,25 +35,27 @@ final class RepositoryTests: XCTestCase {
         
     }
     
+    
     func testRepositoryNilAvatarURL() {
+        
         let data = dataFrom(filename: "sampleRepositoryNilAvatarURL")
         let decoder = JSONDecoder()
         let repository = try! decoder.decode(Repository.self, from: data)
         XCTAssertEqual(repository.owner.avatarURL, nil)
         XCTAssertEqual(repository.avatarImageUrl, nil)
+        
     }
     
     func testRepositoryNilDateTimeString() {
+        
         let data = dataFrom(filename: "sampleRepositoryNilDateTime")
         let decoder = JSONDecoder()
         let repository = try! decoder.decode(Repository.self, from: data)
         XCTAssertEqual(repository.createdDate, nil)
         XCTAssertEqual(repository.updatedDate, nil)
+        
     }
 
-    
-    
-    
 }
 
 

@@ -8,6 +8,7 @@
 import XCTest
 
 final class RepositoryDetailViewTests: XCTestCase {
+    
     var app: XCUIApplication!
     
     override func setUpWithError() throws {
@@ -19,6 +20,7 @@ final class RepositoryDetailViewTests: XCTestCase {
         
     }
     
+    
     override func tearDownWithError() throws {
         
         app.terminate()
@@ -26,6 +28,7 @@ final class RepositoryDetailViewTests: XCTestCase {
         try super.tearDownWithError()
         
     }
+    
     
     func testRepositoryListViewInitialization() {
         let searchField = app.textFields["searchField"]
@@ -66,5 +69,4 @@ final class RepositoryDetailViewTests: XCTestCase {
        
     }
 
-    
 }

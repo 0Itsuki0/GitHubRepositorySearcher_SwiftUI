@@ -19,6 +19,7 @@ final class RepositoryListViewTests: XCTestCase {
         
     }
     
+    
     override func tearDownWithError() throws {
         
         app.terminate()
@@ -26,6 +27,7 @@ final class RepositoryListViewTests: XCTestCase {
         try super.tearDownWithError()
         
     }
+    
     
     func testRepositoryListViewInitialization() {
         let searchField = app.textFields["searchField"]
@@ -89,6 +91,7 @@ final class RepositoryListViewTests: XCTestCase {
         }
         
     }
+    
     
     func testRepositoryListViewLoader() {
         let searchField = app.textFields["searchField"]

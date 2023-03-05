@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RepositoryListCellView: View {
+    
     @ObservedObject var viewModel: RepositoryDetailViewModel
     
     var body: some View {

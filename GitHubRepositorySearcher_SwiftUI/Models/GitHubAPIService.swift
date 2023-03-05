@@ -41,6 +41,7 @@ class GitHubAPIService {
         
     }
     
+    // publisher for fetching repository list
     static func gitHubRepositoryPublisher(searchFor text: String) -> AnyPublisher<Response, Error> {
         if text.trimmingCharacters(in: .whitespaces).isEmpty {
             return Fail(error: ServiceError.emptyText as Error).eraseToAnyPublisher()
@@ -82,7 +83,7 @@ class GitHubAPIService {
 
     }
     
-    
+    // publisher for fetching owner avatar image
     static func ownerAvatarImagePublisher(avatarImageURL: URL) -> AnyPublisher<Image, Error> {
          
         let session = URLSession.shared

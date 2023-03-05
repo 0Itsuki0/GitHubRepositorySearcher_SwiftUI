@@ -14,7 +14,6 @@ struct RepositoryListView: View {
     var body: some View {
            NavigationView {
                ZStack {
-
                    Background
                        .ignoresSafeArea()
                    
@@ -36,14 +35,15 @@ struct RepositoryListView: View {
        }
 }
 
+
 extension RepositoryListView {
     
     var Background: some View {
         LinearGradient(colors: [Color(red: 71/255, green: 110/255, blue: 168/255),
                                 Color(red: 6/255, green: 9/255, blue: 28/255)],
                        startPoint: .topLeading, endPoint: .bottomTrailing)
-        
     }
+    
     
     var SearchField: some View {
         VStack {
@@ -93,7 +93,6 @@ extension RepositoryListView {
         }
         
     }
-    
     
     
     var RepositoryList: some View {

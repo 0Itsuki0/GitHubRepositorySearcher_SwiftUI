@@ -10,7 +10,9 @@ import SwiftUI
 import Combine
 
 class RepositoryDetailViewModel: ObservableObject {
+    
     @Published var avatarImage: Image!
+    
     let repository: Repository
     
     init(repository: Repository) {
@@ -18,8 +20,6 @@ class RepositoryDetailViewModel: ObservableObject {
         self.avatarImage = Image(systemName: "rectangle.on.rectangle.slash")
         fetchAvatarImage(avatarImageURL: repository.avatarImageUrl)
     }
-    
-
     
     private var subscriptions = Set<AnyCancellable>()
     

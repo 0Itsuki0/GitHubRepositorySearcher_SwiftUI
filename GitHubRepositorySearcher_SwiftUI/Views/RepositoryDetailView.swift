@@ -40,6 +40,7 @@ struct RepositoryDetailView: View {
    }
 }
 
+
 extension RepositoryDetailView {
     
     var Background: some View {
@@ -51,7 +52,7 @@ extension RepositoryDetailView {
     
     var AvatarIcon: some View {
         VStack(alignment: .center) {
-            (viewModel.avatarImage ?? Image(systemName: "rectangle.on.rectangle.slash"))
+            viewModel.avatarImage
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal, 40.0)
@@ -118,6 +119,7 @@ extension RepositoryDetailView {
     }
     
 }
+
 
 struct RepositoryDetailView_Previews: PreviewProvider {
 

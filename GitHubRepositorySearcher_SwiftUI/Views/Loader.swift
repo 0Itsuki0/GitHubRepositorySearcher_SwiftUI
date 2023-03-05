@@ -13,8 +13,9 @@ struct Loader: View {
     @Binding var isShown: Bool
     
     var body: some View {
+        
         VStack {
-            
+    
             ProgressView() {
                 Text("Please wait...")
                     .font(.headline)

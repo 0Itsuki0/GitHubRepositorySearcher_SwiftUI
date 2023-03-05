@@ -9,9 +9,11 @@ import XCTest
 
 
 extension XCTestCase {
+    
    func dataFrom(filename: String) -> Data {
         let path = Bundle(for: GitHubRepositorySearcher_SwiftUITests.self).path(forResource: filename, ofType: "json")!
         return NSData(contentsOfFile: path)! as Data
     }
+    
 }
 

@@ -23,7 +23,6 @@ final class GitHubAPIServiceTests: XCTestCase {
 
 
     // tests for gitHubRepositoryPublisher function
-    
     func testGitHubRepositoryPublisherSuccess() {
             
         var repositoryList = [Repository]()
@@ -62,7 +61,6 @@ final class GitHubAPIServiceTests: XCTestCase {
     }
     
     
-    
     func testGitHubRepositoryPublisherEmptyText() {
             
         var repositoryList = [Repository]()
@@ -93,6 +91,7 @@ final class GitHubAPIServiceTests: XCTestCase {
         XCTAssertEqual(repositoryList.count, 0)
 
     }
+    
     
     func testGitHubRepositoryPublisherNoResult() {
             
@@ -133,7 +132,6 @@ final class GitHubAPIServiceTests: XCTestCase {
     }
     
     
-    
     func testGitHubRepositoryPublisherNetworkError() {
             
         var repositoryList = [Repository]()
@@ -171,6 +169,7 @@ final class GitHubAPIServiceTests: XCTestCase {
         XCTAssertEqual(repositoryList.count, 0)
 
     }
+    
     
     func testGitHubRepositoryPublisherBadRequest() {
             
@@ -367,7 +366,6 @@ final class GitHubAPIServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    
     
     
 }

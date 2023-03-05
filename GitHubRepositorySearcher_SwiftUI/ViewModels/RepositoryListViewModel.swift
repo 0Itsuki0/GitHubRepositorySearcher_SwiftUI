@@ -11,15 +11,16 @@ import Combine
 
 
 class RepositoryListViewModel: ObservableObject {
+    
     @Published var searchFieldText: String = ""
     @Published var repositoryList = [Repository]()
     @Published var error: Error?
     @Published var isLoading: Bool = false
 
-    
     private var subscriptions = Set<AnyCancellable>()
     
     func fetchRepositoryList() {
+        
         isLoading = true
         GitHubAPIService.gitHubRepositoryPublisher(searchFor: searchFieldText)
             .receive(on: DispatchQueue.main)
@@ -40,7 +41,7 @@ class RepositoryListViewModel: ObservableObject {
                 }
             })
             .store(in: &subscriptions)
+        
     }
     
-  
 }

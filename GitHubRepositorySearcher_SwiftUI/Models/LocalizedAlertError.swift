@@ -7,6 +7,7 @@
 
 import Foundation
 
+// helper struct on displaying customized error as alert
 struct LocalizedAlertError: LocalizedError {
     let underlyingError: LocalizedError
     
