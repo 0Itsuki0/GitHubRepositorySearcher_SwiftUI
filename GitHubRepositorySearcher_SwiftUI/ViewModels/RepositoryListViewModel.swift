@@ -16,6 +16,13 @@ class RepositoryListViewModel: ObservableObject {
     @Published var repositoryList = [Repository]()
     @Published var error: Error?
     @Published var isLoading: Bool = false
+    
+    var languageCategories: [String: [Repository]] {
+        Dictionary(
+            grouping: repositoryList,
+            by: { $0.language ?? "Unknown" }
+        )
+    }
 
     private var subscriptions = Set<AnyCancellable>()
     
